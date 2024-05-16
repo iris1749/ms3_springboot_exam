@@ -13,11 +13,12 @@ import java.util.List;
 public class NoteService {
     private final NoteRepository noteRepository;
 
-    public Note saveDefault() {
+    public Note saveDefault(Notebook notebook) {
         Note note = new Note();
         note.setTitle("new title..");
         note.setContent("");
         note.setCreateDate(LocalDateTime.now());
+        note.setNotebook(notebook);
 
         return noteRepository.save(note);
     }

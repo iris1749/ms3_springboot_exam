@@ -1,5 +1,6 @@
 package com.example.ms1.note.notebook;
 
+import com.example.ms1.note.note.Note;
 import com.example.ms1.note.note.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,16 @@ public class NotebookService {
     }
 
     public Notebook save(Notebook notebook) {
+        return notebookRepository.save(notebook);
+    }
+
+    public void delete(Long id) {
+        notebookRepository.deleteById(id);
+    }
+
+    public Notebook updateName(Long id, String name) {
+        Notebook notebook = getNotebook(id);
+        notebook.setName(name);
         return notebookRepository.save(notebook);
     }
 }

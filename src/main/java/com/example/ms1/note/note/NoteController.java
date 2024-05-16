@@ -25,8 +25,8 @@ public class NoteController {
 
     @PostMapping("/write")
     public String write(@PathVariable("notebookId") Long notebookId) {
-
-        mainService.addToNotebook(notebookId);
+        Notebook notebook = mainService.getNotebook(notebookId);
+        noteService.saveDefault(notebook);
         return "redirect:/";
     }
 
@@ -59,6 +59,5 @@ public class NoteController {
         noteService.delete(id);
         return "redirect:/";
     }
-
 
 }
